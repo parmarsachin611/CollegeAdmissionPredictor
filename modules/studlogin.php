@@ -145,7 +145,7 @@
                             <input type="checkbox"><span>Remember Me</span>
                         </form>
                         <button type="button" class="btn" onclick="openRegister()">I'm New Here</button>
-                        <a href="">Forget Password</a>
+                        <a href="passwordreset.php">Forget Password</a>
                     </div>
                     <!-- REGISTER -->
                     <div class="card-back">

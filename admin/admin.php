@@ -12,8 +12,11 @@
         $result = mysqli_query($con,$sql);
         $row = mysqli_fetch_assoc($result);
         $AdminPassword = $row['adminpass'];
+        $aid = $row['aid'];
         
         if(password_verify($Pass,$AdminPassword)){
+            session_start();
+            $_SESSION['aid'] =  $aid;
             echo "<script>alert('Login Successful.')
             window.location='addCollege.php'
             </script>";
