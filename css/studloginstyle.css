@@ -14,7 +14,7 @@
     justify-content: center;
 }
 
-.card{
+.scard{
     width: 350px;
     height: 500px;
     box-shadow: 0 0 40px 20px rgba(0, 0, 0, 0.26);
@@ -29,7 +29,7 @@
     transition: transform 1s;
 }
 
-.card-front , .card-back{
+.scard-front , .scard-back{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -41,11 +41,11 @@
     backface-visibility: hidden;
 }
 
-.card-back{
+.scard-back{
     transform: rotateY(180deg);
 }
 
-.card h2{
+.scard h2{
     font-weight: normal;
     font-size: 24px;
     text-align: center;
@@ -107,11 +107,11 @@ span{
     margin-left: 10px;
 }
 
-.card .btn{
+.scard .btn{
     margin-top: 10px;
 }
 
-.card a{
+.scard a{
     color: #fff;
     text-decoration: none;
     display: block;
@@ -121,7 +121,7 @@ span{
 }
 
 @media(max-width: 700px){
-    .card{
+    .scard{
         width: 300px;
     }
     .container{

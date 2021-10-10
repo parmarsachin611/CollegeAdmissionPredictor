@@ -3,18 +3,24 @@
 include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'config.php';
 
     if(isset($_POST['submitCollege'])){
-        $c_name = $_POST['c_name'];
-        $c_address = $_POST['c_address'];
-        $c_city =$_POST['c_city'];
-        $c_zip = $_POST['c_zip'];
-        $c_contact = $_POST['c_contact'];
+        $c_name = mysqli_real_escape_string($con,$_POST['c_name']);
+        $c_address = mysqli_real_escape_string($con,$_POST['c_address']);
+        $c_city =mysqli_real_escape_string($con,$_POST['c_city']);
+        $c_zip = mysqli_real_escape_string($con,$_POST['c_zip']);
+        $c_contact = mysqli_real_escape_string($con,$_POST['c_contact']);
+        $checkbox1 = $_POST['branch'];
+        $branch="";  
+        foreach($checkbox1 as $chk1)  
+        {  
+            $branch.= $chk1.",";  
+        }
 
         $sql = "SELECT * FROM addcollege WHERE c_name = '$c_name'";
         $result = mysqli_query($con,$sql);
 
         if (!$result -> num_rows>0){
-            $sql = "INSERT INTO addcollege(c_name,c_address,c_city,c_zip,c_contact)
-            VALUES('$c_name','$c_address','$c_city','$c_zip','$c_contact')";
+            $sql = "INSERT INTO addcollege(c_name,c_branch,c_address,c_city,c_zip,c_contact)
+            VALUES('$c_name','$branch','$c_address','$c_city','$c_zip','$c_contact')";
 
         $result = mysqli_query($con, $sql);
 
@@ -50,6 +56,7 @@ include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPA
     <title>College Admission Prediction</title>
 </head>
 <body>
+
     <section class="sub-header">
         <nav>
             <a href="index.html"><h3 class="logo-text">College Admission Prediction</h3></a>
@@ -57,7 +64,6 @@ include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPA
                 <i class="fa fa-times" onclick="hideMenu()"></i>
                 <ul>
                     <li><a href="/index.html">ADD COLLEGE</a></li>
-                    <li><a href="addStream.php">ADD COLLEGE STREAM</a></li>
                     <li><a href="">ADD CUTOFF</a></li>
                     <li><a href="">VIEW COLLEGE</a></li>
                     <li><a href="">VIEW STUDENT</a></li>
@@ -71,15 +77,25 @@ include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPA
         <h1>Add College</h1>
 
     </section>
-
-    <section>
-        
-        <form action="" method="POST" enctype="multipart/form-data">
+    <div class="dcard dashcard4">
+        <h3 style="text-align:center">ADD College</h3>
+        <form style="text-align:center" action="" method="POST" enctype="multipart/form-data">
             <div>
                 <div>
                     <label for="">College Name: </label>
                 </div>
                 <input type="text" name="c_name" placeholder="College Name" required>
+            </div>
+            <div>
+                <div>
+                    <label for="">Select College Branch: </label>
+                </div>
+                <input type="checkbox" name="branch[ ]" value="Information Technology">Information Technology<br />  
+                <input type="checkbox" name="branch[ ]" value="Computer Science">Computer Science<br />  
+                <input type="checkbox" name="branch[ ]" value="Electronics and Computer Science">Electronics and Computer Science<br />  
+                <input type="checkbox" name="branch[ ]" value="Mechanical">Mechanical<br />  
+                <input type="checkbox" name="branch[ ]" value="EXTC">EXTC<br />  
+                <input type="checkbox" name="branch[ ]" value="Artificial Intelligence">Artificial Intelligence<br />  
             </div>
             <div>
                 <div>
@@ -110,7 +126,11 @@ include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPA
             </div>
         </form>
       
-    </section>
+    </div>
+   
+        
+        
+   
 
     <!-- --------JavaScript for toogle button-------- -->
     <script>

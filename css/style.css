@@ -208,3 +208,45 @@ nav .fa{
 .red-btn:hover{
     color: #fff;
 }
+
+
+@media (max-width: 1030px){
+.dashcard4 {
+    width: 70%;
+}
+}
+.dashcard4 {
+    position: relative;
+    margin: auto;
+    /* margin-top: 70px; */
+    width: 60%;
+    padding: 40px;
+    display: block;
+    /* left: 10%; */
+    overflow-x: auto;
+    border-radius: 20px;
+    z-index: 5;
+    top: -200px;
+    -webkit-box-shadow: 0px 0px 28px -10px rgb(0 0 0 / 75%);
+    -moz-box-shadow: 0px 0px 28px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 28px -10px rgb(0 0 0 / 75%);
+}
+.dcard {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    margin-top: 120px;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
